@@ -17,7 +17,15 @@ function drawImage() {
     console.log({ imgUrl })
     img.onload = function () {
         console.log(img)
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
+        
+            var hRatio = gCanvas.width / img.width    ;
+            var vRatio = gCanvas.height / img.height  ;
+            var ratio  = Math.min ( hRatio, vRatio );
+            gCtx.drawImage(img, 0,0, img.width, img.height, 0,0,img.width*ratio, img.height*ratio);
+            // document.querySelector('.sideContainer').style.display = 'inline-grid';
+
+
     }
     img.src = imgUrl;
 }

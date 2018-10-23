@@ -14,7 +14,7 @@ var gMeme = {
 
 
 function getImgs() {
-    return gImgs
+    return gImgs;
 }
 
 function createImg(id) {

@@ -1,7 +1,23 @@
+*{
+    margin:5px;
+}
+
+.main-nav-bar{
+    background-color: lightskyblue;
+    font-family:monospace;
+    text-align: center;
+    font-size: 2rem;
+}
+
+body{
+    background-color: lightgray;
+}
+
 footer{
     background-color: #323232;
     color: #e0e0e0;
     margin: 0;
+    padding: 30px;
 }
 
 img {
@@ -16,4 +32,21 @@ img {
 
 .imgs-container {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.searchBtn{
+    cursor: pointer;
+}
+
+.backBtn{
+    cursor: pointer;
+}
+
+.sideContainer{
+    display:none; 
+    height: 400px;
+    width: 300px;
+    border: 1px solid black;
+    background-color:lightcyan;
+    
 }
