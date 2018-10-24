@@ -1,5 +1,10 @@
 'use strict';
 
+
+//TODO - render canvas - drow img, loop on gTxt array.
+//TODO - change color on the moadel anf then render canvas
+//TODO - div background-img background size cover (instead of current gallery)
+
 var gCanvas;
 var gCtx;
 
@@ -48,22 +53,6 @@ function createCanvas() {
     scrollY = canvas.scrollTop();
 }
 
-function drawImage() {
-    var img = new Image()
-    let imgUrl = getImgUrl()
-
-    img.onload = function () {
-        // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
-
-        var hRatio = gCanvas.width / img.width;
-        var vRatio = gCanvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
-        gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
-        // document.querySelector('.sideContainer').style.display = 'inline-grid';
-    }
-    img.src = imgUrl;
-
-}
 
 function drawMovableText() {
     
@@ -120,8 +109,8 @@ function handleMouseMove(e) {
         return;
     }
     e.preventDefault();
-    mouseX = parseInt(e.clientX - offsetX);
-    mouseY = parseInt(e.clientY - offsetY);
+    var mouseX = parseInt(e.clientX - offsetX);
+    var mouseY = parseInt(e.clientY - offsetY);
 
     // Put your mousemove stuff here
     var dx = mouseX - startX;
