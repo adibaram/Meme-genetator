@@ -40,6 +40,7 @@ function backToGallery() {
     document.querySelector('.imgs-container').style.display = 'block';
     document.querySelector('.search-bar').style.display = 'block';
     document.querySelector('.sideContainer').style.display = 'none';
+    // init();
 
    
 }

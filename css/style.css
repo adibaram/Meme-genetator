@@ -1,5 +1,6 @@
 *{
-    margin:5px;
+    box-sizing: border-box;
+    margin: 5px;
 }
 
 .main-nav-bar{
@@ -21,13 +22,22 @@ footer{
 }
 
 img {
-    max-height: 300px;
-    cursor: pointer;
+    /* max-height: 300px; */
+    height: 150px;
+    width: 150px;
     border-radius: 20px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+img:hover {
+    cursor: pointer;
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 #canvas {
-    display: none;
+    /* display: none; */
     /* color: pink */
 }
 
@@ -53,7 +63,7 @@ img {
 } */
 
 .control-box {
-    /* display:none;  */
+    display:none; 
     height: 300px;
     width: 400px;
     border: 1px solid black;
