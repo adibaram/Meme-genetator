@@ -42,12 +42,18 @@ img:hover {
 
 }
 
-.imgs-container {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
+/* .search-list {
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+} */
 
 .searchBtn{
     cursor: pointer;
+}
+
+.imgs-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .backBtn{
@@ -63,9 +69,8 @@ img:hover {
 
 }
 
-.cropBox.off, .cropBox.off:before {
-    border-color: transparent;
-}
+
+
 
  @media (max-width: 550px) {
     
