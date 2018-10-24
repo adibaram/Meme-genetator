@@ -38,6 +38,10 @@ function renderImgsGallery() {
 function backToGallery() {
     document.querySelector('#canvas').style.display = 'none';
     document.querySelector('.imgs-container').style.display = 'block';
+    document.querySelector('.search-bar').style.display = 'block';
+    document.querySelector('.sideContainer').style.display = 'none';
+
+   
 }
 
 function onSearchImg(keyword, event) {
