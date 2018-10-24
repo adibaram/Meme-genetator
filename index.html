@@ -21,14 +21,36 @@
         <button class="searchBtn"> Search</button>
     </div>
 
-    <aside class="sideContainer "></aside>
+    <div class="canvas-control-container flex space-between">
+            <div class="canvas-container">
+            <canvas height="400px" width="500px" id="canvas">Upgrade your browser to enjoy Canvas</canvas>
+
+                          
+            </div>
+            <div class="control-box">
+                    <div class="add-txt">
+                        <div class="txt-inputs-container"></div>
+                            <input id="custom-text" style="width: 80%;" onchange="drawText(this.value, 100, 100)" value="your text" type="text">
+                            <input id="custom-text" style="width: 80%;" onchange="drawText(this.value, 100, 200)" value="your text" type="text">
+                            
+                        </div>
+                            <button>Update</button>
+                            <button onclick="addMoreTxt()">Add more text lines</button>
+                    </div>
+            </div>
+    </div>
+
 
     <section class="imgs-container flex flex-wrap flex-direction center" ></section>
 
+<<<<<<< HEAD
     <div class="canvas-container flex space-between center">
         <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
         <div class="control-box"></div>
     </div>
+=======
+
+>>>>>>> b5bcb115352b5f43855081d88dfe22d8cad9b9ef
 
     <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
 

@@ -22,8 +22,9 @@ function createCanvas() {
 function drawImage() {
     var img = new Image()
     let imgUrl = getImgUrl()
-    // const imageDiamRat = img.width / img.height;
+
     img.onload = function () {
+<<<<<<< HEAD
         // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
 
         var hRatio = gCanvas.width / img.width;
@@ -31,15 +32,26 @@ function drawImage() {
         var ratio = Math.min(hRatio, vRatio);
         gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
         // document.querySelector('.sideContainer').style.display = 'inline-grid';
+=======
+
+        
+            var hRatio = gCanvas.width / img.width    ;
+            var vRatio = gCanvas.height / img.height  ;
+            var ratio  = Math.min ( hRatio, vRatio );
+            gCtx.drawImage(img, 0,0, img.width, img.height, 0,0,img.width*ratio, img.height*ratio);
+
+>>>>>>> b5bcb115352b5f43855081d88dfe22d8cad9b9ef
     }
     img.src = imgUrl;
 }
 
-function drawText(txt) {
-    gCtx.fillStyle = 'black'
+function drawText(txt, x, y) {
+
+    gCtx.fillStyle = 'white'
     gCtx.font = '50px Impact'
-    gCtx.fillText(txt, 200, 200)
+    gCtx.fillText(txt, x, y)
 }
+
 
 function addMoreTxt() {
     var elInpustContainer = document.querySelector('.txt-inputs-container');

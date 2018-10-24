@@ -13,7 +13,7 @@ function setMemeImg(url) {
     document.querySelector('#canvas').style.display = 'block';
     document.querySelector('.imgs-container').style.display = 'none';
     document.querySelector('.search-bar').style.display = 'none';
-    
+    document.querySelector('.control-box').style.display = 'block';
     gSelectedImgUrl = url;
     drawImage();
 }
@@ -21,7 +21,6 @@ function setMemeImg(url) {
 function getImgUrl() {
     return gSelectedImgUrl;
 }
-
 
 
 function renderImgsGallery() {
