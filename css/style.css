@@ -70,3 +70,18 @@ img:hover {
     background-color:lightcyan;
     /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif */
 }
+
+ @media (max-width: 550px) {
+    
+    img {
+      max-width: 100%; 
+      opacity: 1;
+        
+    }
+     .imgs-container {
+        display: grid;
+        max-width: 100%;
+              
+    } 
+  
+} 
