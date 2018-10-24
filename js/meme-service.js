@@ -3,17 +3,55 @@ var gImgs = [];
 
 var gMeme = {
     selectedImgId: 5,
-    txts: [
-        {
-            line: 'I never eat Falafel', size: 20,
-            align: 'left',
-            color: 'red'
-        }
-    ]
+    txts: []
+}
+
+
+
+function drawImage() {
+    var currImg = gImgs[gMeme.selectedImgId];
+    var img = new Image()
+    let imgUrl = currImg.url;
+
+    img.onload = function () {
+        // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
+
+        var hRatio = gCanvas.width / img.width;
+        var vRatio = gCanvas.height / img.height;
+        var ratio = Math.min(hRatio, vRatio);
+        gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
+    }
+    img.src = imgUrl;
+}
+
+function onSubmit(ev, txt) {
+    var y = gMeme.txts.length * 120 + 40;
+    ev.preventDefault();
+    var txt = {
+        text: $("#theText").val(),
+        x: 40,
+        y: y,
+        size: 40,
+        align: 'left',
+        color: 'red'
+    }
+    addText(txt);
+    renderCanvas();
+}
+
+
+function addText(txt) {
+    gMeme.txts.push(txt);
 }
 
 function getImgs() {
     return gImgs;
+}
+
+function setCurrMeme(id) {
+    gMeme.selectedImgId = id;
+    gMeme.txts = [];
+    return gMeme;
 }
 
 function createImg(id) {

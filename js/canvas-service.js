@@ -1,5 +1,10 @@
 'use strict';
 
+
+//TODO - render canvas - drow img, loop on gTxt array.
+//TODO - change color on the moadel anf then render canvas
+//TODO - div background-img background size cover (instead of current gallery)
+
 var gCanvas;
 var gCtx;
 
