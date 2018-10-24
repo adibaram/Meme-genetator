@@ -12,7 +12,6 @@ var gMeme = {
     ]
 }
 
-
 function getImgs() {
     return gImgs;
 }
@@ -27,7 +26,7 @@ function createImg(id) {
 }
 
 function createImgs() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 24; i++) {
         var img = createImg(i);
         gImgs.push(img);
     }
@@ -38,14 +37,27 @@ function createImgs() {
     addKeywords(4, 'baby', 'cute', 'sleep', 'dog');
     addKeywords(5, 'baby', 'angry');
     addKeywords(6, 'cat', 'keyboard', 'sleep');
-    addKeywords(7, 'suit', 'men', 'hands');
+    addKeywords(7, 'suit', 'man', 'hands');
     addKeywords(8, 'clown', 'hat');
     addKeywords(9, 'baby', 'fun');
+    addKeywords(10, 'bold', 'v', 'man');
+    addKeywords(11, 'dance', 'kids', 'happy');
+    addKeywords(12, 'you', 'haim', 'hecht');
+    addKeywords(13, 'trump', 'point', 'president');
+    addKeywords(14, 'shout', 'shouting', 'mad');
+    addKeywords(15, 'baby', 'wonder', 'shock');
+    addKeywords(16, 'dog', 'yoga');
+    addKeywords(17, 'obama', 'usa', 'president', 'teeth');
+    addKeywords(18, 'men', 'kiss', 'boxing');
+    addKeywords(19, 'man', 'fun');
+    addKeywords(20, 'leo', 'wine', 'handsom');
+    addKeywords(21, 'man', 'sunglasses');
+    addKeywords(22, 'oprah', 'dress', 'red');
+    addKeywords(23, 'man', 'fun');
+  
 }
 
-
-
-function addKeywords(id, keywords) {
+function addKeywords(id) {
     for (let i = 0; i < arguments.length; i++) {
         if (arguments[i] === id) {
             continue
