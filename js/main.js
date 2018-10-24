@@ -5,7 +5,7 @@ var gSelectedImgUrl;
 
 function init() {
     createImgs();
-    createCanvas();
+    // createCanvas();
     renderImgsGallery();
 }
 
@@ -40,7 +40,6 @@ function backToGallery() {
     document.querySelector('.search-bar').style.display = 'block';
     document.querySelector('.sideContainer').style.display = 'none';
     // init();
-
    
 }
 

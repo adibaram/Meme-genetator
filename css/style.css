@@ -38,6 +38,7 @@ img:hover {
 
 #canvas {
     display: none;
+    /* position:relative; */
 
 }
 
