@@ -18,14 +18,17 @@
 
     <div class="search-bar">
         <input type="search" id="mySearch" placeholder="Search for image" value="" onchange="onSearchImg(this.value ,event)">
-        <button class="searchBtn" > Search</button>
+        <button class="searchBtn"> Search</button>
     </div>
 
     <aside class="sideContainer "></aside>
 
     <section class="imgs-container grid gap" ></section>
 
-    <div><canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas></div>
+    <div class="canvas-container flex space-between">
+        <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
+        <div class="control-box"></div>
+    </div>
 
     <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
 
