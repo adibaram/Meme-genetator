@@ -2,16 +2,28 @@
     display: flex;
 }
 
-.flex.wrap {
+.flex-wrap {
     flex-wrap: wrap;
+}
+
+.flex-direction{
+    flex-direction: row;
 }
 
 .space-between {
     justify-content: space-between;
 }
 
+.space-evenly {
+    justify-content: space-evenly;
+}
+
 .space-around {
     justify-content: space-around;
+}
+
+.center {
+    justify-content: center;
 }
 
 .align-center {
@@ -23,5 +35,5 @@
 }
 
 .gap {
-    grid-gap:30px;
+    grid-gap:10px;
 }
