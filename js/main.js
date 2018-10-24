@@ -13,7 +13,7 @@ function setMemeImg(url) {
     document.querySelector('#canvas').style.display = 'block';
     document.querySelector('.imgs-container').style.display = 'none';
     document.querySelector('.search-bar').style.display = 'none';
-
+    
     gSelectedImgUrl = url;
     drawImage();
 }

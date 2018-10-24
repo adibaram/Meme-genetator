@@ -14,6 +14,10 @@ function createCanvas() {
 function drawImage() {
     var img = new Image()
     let imgUrl = getImgUrl()
+    // const imageDiamRat = img.width / img.height;
+    console.log('img.width', img.width);
+    console.log('img.height', img.height);
+    
     console.log({ imgUrl })
     img.onload = function () {
         console.log(img)
