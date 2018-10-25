@@ -103,8 +103,8 @@ function createCanvas() {
 
     if (window.innerWidth <= 550) {
         gCanvas = document.querySelector('#canvas');
-        gCanvas.width = window.innerWidth * 5 / 6;
-        gCanvas.height = window.innerHeight * 5 / 6;
+        gCanvas.width = window.innerWidth * 98 / 100;
+        gCanvas.height = window.innerHeight * 98 / 100;
         gCtx = gCanvas.getContext('2d');
 
     }
@@ -222,4 +222,10 @@ function addSelector() {
 //         }
 //     }
 // }
+function downloadCanvas(elLink) {
+    elLink.href = gCanvas.toDataURL();
+    elLink.download = 'my-meme.jpg';
+
+}
+
 
