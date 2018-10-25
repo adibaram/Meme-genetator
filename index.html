@@ -35,7 +35,6 @@
             </section>
     </header>
 
-
     <div class="search-container">
         <div class="search-list"></div>
         <div class="search-bar">
@@ -45,17 +44,17 @@
     </div>
 
     <div class="canvas-control-container flex space-between">
-        <div class="canvas-container">
+            <div class="canvas-container">
             <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
 
 
         </div>
         <div class="control-box">
             <ul>
-                <input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
-                <button id="submit" class="addText" onclick="addText(value)">Add text</button>
+                <li><input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
+                <button id="submit" class="addText" onclick="addText(value)">Add text</button></li>
                 <!-- <button id="submit" onclick="onUpdate()">Update</button> -->
-                <button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up" onclick="onKeyUp()">↑</button>
+                <li><button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up" onclick="onKeyUp()">↑</button></li>
                 <!-- <button class="btn-paint" onclick="drowOnMeme()">✏️</button> -->
                 <li><input id="theColor" type="color" value="#ff0000"></li>
                 <li><input id="sizeFont" type="range" min=10 max=50 step="1"></li>
@@ -70,12 +69,6 @@
 
 
     <section class="imgs-container flex flex-wrap flex-direction center"></section>
-
-
-
-
-    </div>
-    </div>
 
     <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
 

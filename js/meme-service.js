@@ -5,6 +5,7 @@ var gMeme = {
     txts: []
 }
 
+
 var gy = gMeme.txts.length * 120 + 40;
 
 function drawImage() {
@@ -25,7 +26,6 @@ function drawImage() {
 
 function onSubmit(ev, txt) {
     var y = gMeme.txts[gTextFocus].y;
-    ev.preventDefault();
     var txt = {
         text: $("#theText").val(),
         x: 40,
@@ -33,11 +33,13 @@ function onSubmit(ev, txt) {
         size: $("#sizeFont").val(),
         align: 'center',
         color: $("#theColor").val()
-
     }
+
     gMeme.txts[gTextFocus] = txt;
     renderCanvas();
 }
+
+
 
 //TODO: spin txt
 function spinTxt() {
@@ -60,7 +62,6 @@ function lowerLetter() {
 //     renderCanvas();
 // }
 
-
 function addText(txt) {
     var elInput = document.querySelector('.memeText');
     elInput.value = '';
@@ -81,6 +82,7 @@ function addText(txt) {
         color: 'white'
     });
 
+    // addToList();
     if (gMeme.txts.length === 0) renderCanvas();
     else {
         gTextFocus++;
@@ -156,6 +158,40 @@ function addKeywords(id) {
             gImgs[id].keywords.push(arguments[i]);
         }
     }
+}
+
+function updateColor(color) {
+    var text = gMeme.txts[gTextFocus];
+    text.color = color; 
+    gCtx.fillStyle = `${text.color}`
+    gCtx.font = `${text.size}px Impact`
+    gCtx.strokeStyle = 'black';
+    gCtx.lineWidth = 3;
+    gCtx.strokeText(text.text, text.x, text.y);
+    gCtx.fillText(text.text, text.x, text.y);
+}
+
+function updateFontSize(size) {
+    var text = gMeme.txts[gTextFocus];
+    text.size = size; 
+    drawImage();
+    renderCanvas();
+}
+
+function onKeyDown() {
+
+}
+
+function onKeyUp() {
+    
+}
+
+function onKeyRight() {
+    
+}
+
+function onKeyLeft() {
+    
 }
 
 // var gSearchWord = [{search: 'dog' , count: 0} , 

@@ -30,6 +30,10 @@ body{
     background-color: lightgray;
 }
 
+ul {
+    list-style-type: none;
+}
+
 footer{
     background-color: #323232;
     color: #e0e0e0;
@@ -82,11 +86,11 @@ img:hover {
     width: 400px;
     border: 1px solid black;
     background-color:lightcyan;
-    padding-top:15px;
-    padding-left: 15px;
-
 }
 
+.focusSelect{
+    display: none;
+}
 li{
     list-style-type: none;
 }
@@ -111,6 +115,12 @@ button a {
 }
 
 
+/* .btn-arrow-down {
+    display: none;
+}
+.btn-arrow-up {
+    display: none;
+} */
 
 
  @media (max-width: 550px) {
