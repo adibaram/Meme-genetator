@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/helpers.css">
+    <link rel="stylesheet" href="css/gallery-imgs.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <title>Meme generator</title>
 </head>
 
@@ -15,6 +17,7 @@
     <header class="main-nav-bar">
         <h1>Memes generator</h1>
     </header>
+
     <div class="search-container">
         <div class="search-list"></div>
         <div class="search-bar">
@@ -25,23 +28,28 @@
 
     <div class="canvas-control-container flex space-between">
             <div class="canvas-container">
-            <canvas  id="canvas">Upgrade your browser to enjoy Canvas</canvas>
+            <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
 
 
             </div>
             <div class="control-box">
-                    <input id="theText" type="text">
-                    <button id="submit" onclick="onSubmit(event, value)">Add your text</button>
+                    <input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
+                    <button id="submit" class = "addText" onclick="addText(value)">Add text</button><button id="submit" onclick="onUpdate()">Update</button>
+                    <button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up" onclick="onKeyUp()">↑</button>
+                    <!-- <button class="btn-paint" onclick="drowOnMeme()">✏️</button> -->
+                    <li><input id="theColor" type="color" value="#ff0000"></li>
+                    <li><input id="sizeFont" type="range" min=10 max=50 step="1"></li>
+                    <!-- <button class="showSize"> </button> -->
+                    <li><button onclick="capitalLetter()">A</button><button onclick="lowerLetter()">a</button></li>
+                    <!-- <li><button onclick="centerTxt()"><i class="fas fa-align-center"></i></button></li> -->
+                    <ul>
+
+                    </ul>
             </div>
     </div>
 
 
     <section class="imgs-container flex flex-wrap flex-direction center" ></section>
-
-    <div class="canvas-container flex space-between center">
-        <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
-        <div class="control-box"></div>
-    </div>
 
     <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
 

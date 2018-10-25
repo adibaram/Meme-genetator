@@ -66,10 +66,14 @@ img:hover {
     width: 400px;
     border: 1px solid black;
     background-color:lightcyan;
-
 }
 
-
+.btn-arrow-down {
+    display: none;
+}
+.btn-arrow-up {
+    display: none;
+}
 
 
  @media (max-width: 550px) {
