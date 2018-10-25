@@ -14,9 +14,6 @@ function drawImage() {
     let imgUrl = currImg.url;
     img.src = imgUrl;
 
-
-    // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
-
     var hRatio = gCanvas.width / img.width;
     var vRatio = gCanvas.height / img.height;
     var ratio = Math.min(hRatio, vRatio);
@@ -41,10 +38,10 @@ function onSubmit(ev, txt) {
 
 
 
-//TODO: spin txt
-function spinTxt() {
-    ctx.rotate(Math.PI * 2 / (i * 6));
-}
+// //TODO: spin txt
+// function spinTxt() {
+//     ctx.rotate(Math.PI * 2 / (i * 6));
+// }
 
 function capitalLetter() {
     gMeme.txts[gTextFocus].text = gMeme.txts[gTextFocus].text.toUpperCase();
@@ -194,19 +191,6 @@ function onKeyLeft() {
     
 }
 
-// var gSearchWord = [{search: 'dog' , count: 0} , 
-//                    {search: 'cat' , count: 0} , 
-//                    {search: 'baby', count: 0} , 
-//                    {search: 'man', count: 0}, 
-//                    {search: 'trump', count:0}];
-
-
-// function createWords() {
-//     var words = getFromStorage(KEY_USERS);
-//     gUserSearchWord[0].search = (users) ?  gUserSearchWord[0].count ++ : [addKeywords(id, '')];   
-//     saveWords();
-// }
-
 // function saveWords() {
 //     localStorage.setItem(KEY_USERS, JSON.stringify(gUserSearchWord))
 // }
@@ -215,6 +199,16 @@ function onKeyLeft() {
 //     var val = localStorage.getItem(key);
 //     return JSON.parse(val)
 // }
+
+function responMain() {
+    var x = document.getElementById("top-navRespo");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
 
 
 

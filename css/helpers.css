@@ -28,8 +28,7 @@
 
 .align-center {
     align-items: center;
-    height: 100%;
-     
+    height: 100%;   
 }
 
 .grid {
@@ -39,3 +38,7 @@
 .gap {
     grid-gap:10px;
 }
+
+/* .column {
+    flex-direction: column;
+} */

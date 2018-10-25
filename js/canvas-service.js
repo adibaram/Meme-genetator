@@ -31,13 +31,13 @@ var selectedText = -1;
 function createCanvas() {
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = window.innerWidth * 1/2 ;
-    gCanvas.height = window.innerHeight* 1/2 ;
+    gCanvas.height = window.innerHeight* 1/2  ;
     gCtx = gCanvas.getContext('2d');
 
-    if (window.innerWidth <= 550) {
+    if (window.innerWidth <= 600) {
         gCanvas = document.querySelector('#canvas');
-        gCanvas.width = window.innerWidth * 5 / 6;
-        gCanvas.height = window.innerHeight * 5 / 6;
+        gCanvas.width = window.innerWidth * 1/2;
+        gCanvas.height = window.innerHeight * 1/2;
         gCtx = gCanvas.getContext('2d');
 
     }
