@@ -79,6 +79,8 @@ function onSearchImg(keyword, event) {
         for (var i = 0; i < image.keywords.length; i++) {
             if (image.keywords[i] === keyword) {
                 elImg.style.display = 'block';
+                gSearchWord[0].count ++;
+
                 return true;
             }
             else {

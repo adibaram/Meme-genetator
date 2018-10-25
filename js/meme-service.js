@@ -1,13 +1,11 @@
 'use strict'
 var gImgs = [];
-
 var gMeme = {
     selectedImgId: 0,
     txts: []
 }
 
 var gy = gMeme.txts.length * 120 + 40;
-
 
 function drawImage() {
     var currImg = gImgs[gMeme.selectedImgId];
@@ -103,7 +101,8 @@ function createImg(id) {
     var img = {
         id: id,
         url: `meme-imgs/${id}.jpg`,
-        keywords: []
+        keywords: [],
+        
     }
     return img;
 }
@@ -137,7 +136,7 @@ function createImgs() {
     addKeywords(21, 'man', 'sunglasses');
     addKeywords(22, 'oprah', 'dress', 'red');
     addKeywords(23, 'man', 'fun');
-  
+
 }
 
 function addKeywords(id) {
