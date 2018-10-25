@@ -1,27 +1,26 @@
 'use strict'
 var gImgs = [];
-
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgId: 0,
     txts: []
 }
 
-
+var gy = gMeme.txts.length * 120 + 40;
 
 function drawImage() {
     var currImg = gImgs[gMeme.selectedImgId];
     var img = new Image()
     let imgUrl = currImg.url;
+    img.src = imgUrl;
 
-    img.onload = function () {
+
         // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
 
         var hRatio = gCanvas.width / img.width;
         var vRatio = gCanvas.height / img.height;
         var ratio = Math.min(hRatio, vRatio);
         gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
-    }
-    img.src = imgUrl;
+
 }
 
 function onSubmit(ev, txt) {
@@ -31,17 +30,56 @@ function onSubmit(ev, txt) {
         text: $("#theText").val(),
         x: 40,
         y: y,
-        size: 40,
-        align: 'left',
-        color: 'red'
+        size: $("#sizeFont").val(),
+        align: 'center',
+        color: $("#theColor").val()
+       
     }
-    addText(txt);
+    gMeme.txts[gTextFocus] = txt;
     renderCanvas();
 }
 
+//TODO: spin txt
+function spinTxt(){
+    ctx.rotate(Math.PI*2/(i*6));
+}
+
+function capitalLetter() {
+    //TODO: generalize to more than one text- every time when use render need  to use clear rect()
+   gMeme.txts[0].text = gMeme.txts[0].text.toUpperCase();
+   renderCanvas();    
+}
+
+function lowerLetter() {
+    //TODO: generalize to more than one text- every time when use render need  to use clear rect()
+   gMeme.txts[0].text = gMeme.txts[0].text.toLowerCase();
+   renderCanvas();    
+}
+
+// function centerTxt(){
+//     //TODO: text align
+//     // gMeme.txts[0].x = 0;
+//     renderCanvas();
+// }
+
 
 function addText(txt) {
-    gMeme.txts.push(txt);
+
+    var elInput = document.querySelector('.memeText');
+    elInput.value = '';
+    gy = gy + 100;
+    gMeme.txts.push({
+        text: txt,
+        x: 40,
+        y: gy,
+        size: 40,
+        align: 'left',
+        color: 'red'
+    });
+
+    if (gMeme.txts.length === 0) renderCanvas();
+    else {gTextFocus++;
+    renderCanvas()}
 }
 
 function getImgs() {
@@ -50,7 +88,14 @@ function getImgs() {
 
 function setCurrMeme(id) {
     gMeme.selectedImgId = id;
-    gMeme.txts = [];
+    gMeme.txts = [{
+        text: '',
+        x: 40,
+        y: 40,
+        size: 40,
+        align: 'left',
+        color: 'red'
+    }];
     return gMeme;
 }
 
@@ -58,7 +103,8 @@ function createImg(id) {
     var img = {
         id: id,
         url: `meme-imgs/${id}.jpg`,
-        keywords: []
+        keywords: [],
+        
     }
     return img;
 }
@@ -92,7 +138,7 @@ function createImgs() {
     addKeywords(21, 'man', 'sunglasses');
     addKeywords(22, 'oprah', 'dress', 'red');
     addKeywords(23, 'man', 'fun');
-  
+
 }
 
 function addKeywords(id) {
@@ -104,5 +150,30 @@ function addKeywords(id) {
         }
     }
 }
+
+// var gSearchWord = [{search: 'dog' , count: 0} , 
+//                    {search: 'cat' , count: 0} , 
+//                    {search: 'baby', count: 0} , 
+//                    {search: 'man', count: 0}, 
+//                    {search: 'trump', count:0}];
+
+
+// function createWords() {
+//     var words = getFromStorage(KEY_USERS);
+//     gUserSearchWord[0].search = (users) ?  gUserSearchWord[0].count ++ : [addKeywords(id, '')];   
+//     saveWords();
+// }
+
+// function saveWords() {
+//     localStorage.setItem(KEY_USERS, JSON.stringify(gUserSearchWord))
+// }
+
+// function getFromStorage(key) {
+//     var val = localStorage.getItem(key);
+//     return JSON.parse(val)
+// }
+
+
+
 
 
