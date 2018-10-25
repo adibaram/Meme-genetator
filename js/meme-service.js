@@ -5,6 +5,16 @@ var gMeme = {
     txts: []
 }
 
+var gTextFocus = 0;
+
+function getMemeTxts(){
+    return gMeme.txts;
+}
+
+function getTxtFocus() {
+    return gTextFocus;
+}
+
 
 var gy = gMeme.txts.length * 120 + 40;
 
@@ -13,9 +23,6 @@ function drawImage() {
     var img = new Image()
     let imgUrl = currImg.url;
     img.src = imgUrl;
-
-
-    // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
 
     var hRatio = gCanvas.width / img.width;
     var vRatio = gCanvas.height / img.height;
@@ -42,9 +49,9 @@ function onSubmit(ev, txt) {
 
 
 //TODO: spin txt
-function spinTxt() {
-    ctx.rotate(Math.PI * 2 / (i * 6));
-}
+// function spinTxt() {
+//     ctx.rotate(Math.PI * 2 / (i * 6));
+// }
 
 function capitalLetter() {
     gMeme.txts[gTextFocus].text = gMeme.txts[gTextFocus].text.toUpperCase();
@@ -56,11 +63,6 @@ function lowerLetter() {
     renderCanvas();
 }
 
-// function centerTxt(){
-//     //TODO: text align
-//     // gMeme.txts[0].x = 0;
-//     renderCanvas();
-// }
 
 function addText(txt) {
     var elInput = document.querySelector('.memeText');
@@ -177,45 +179,6 @@ function updateFontSize(size) {
     drawImage();
     renderCanvas();
 }
-
-function onKeyDown() {
-
-}
-
-function onKeyUp() {
-    
-}
-
-function onKeyRight() {
-    
-}
-
-function onKeyLeft() {
-    
-}
-
-// var gSearchWord = [{search: 'dog' , count: 0} , 
-//                    {search: 'cat' , count: 0} , 
-//                    {search: 'baby', count: 0} , 
-//                    {search: 'man', count: 0}, 
-//                    {search: 'trump', count:0}];
-
-
-// function createWords() {
-//     var words = getFromStorage(KEY_USERS);
-//     gUserSearchWord[0].search = (users) ?  gUserSearchWord[0].count ++ : [addKeywords(id, '')];   
-//     saveWords();
-// }
-
-// function saveWords() {
-//     localStorage.setItem(KEY_USERS, JSON.stringify(gUserSearchWord))
-// }
-
-// function getFromStorage(key) {
-//     var val = localStorage.getItem(key);
-//     return JSON.parse(val)
-// }
-
 
 
 

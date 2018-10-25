@@ -2,9 +2,8 @@
 
 var gCanvas;
 var gCtx;
-var gTextFocus = 0;
+
 var gIsFocusDown = true; 
-// var gPaint = false; 
 
 
 function init() {
@@ -20,7 +19,10 @@ function setMemeImg(id) {
     document.querySelector('.control-box').style.display = 'block';
     setCurrMeme(id);
     drawImage();
+    gTexts = getMemeTxts();
+    console.log(gTexts);
 }
+
 
 
 function renderCanvas() {
@@ -148,84 +150,22 @@ function addSelector() {
     elSelector.style.display = 'inline';
 }
 
-// function onUpdate(txt) {
-//     gMeme.txts[gTextFocus].text = txt;
-//     renderCanvas();
-//     // gTextFocus = 0;
-//     changeTextFocus();
-// }
-
-
-
-// function addArrows() {
-//     var elArrowUp = document.querySelector('.btn-arrow-up');
-//     var elArrowDown = document.querySelector('.btn-arrow-down');
-//     elArrowDown.style.display = 'inline';
-//     elArrowUp.style.display = 'inline';
-// }
-
-// function drowOnMeme() {
-
-//     if (gPaint) {
-//         canvas.onmousedown = handleMousedown;
-//         canvas.onmousemove = handleMousemove;
-//         canvas.onmouseup = handleMouseup;
-//     }
-//     else {
-//         gPaint = true;
-//         var canvas = document.getElementById("canvas");
-//         var ctx = canvas.getContext("2d");
-//         var BB = canvas.getBoundingClientRect();
-//         var offsetX = BB.left;
-//         var offsetY = BB.top;
-    
-//         var lastX, lastY;
-//         var isDown = false;
-    
-//         canvas.onmousedown = handleMousedown;
-//         canvas.onmousemove = handleMousemove;
-//         canvas.onmouseup = handleMouseup;
-    
-    
-//         function handleMousedown(e) {
-//             e.preventDefault();
-//             e.stopPropagation();
-//             lastX = e.clientX - offsetX;
-//             lastY = e.clientY - offsetY;
-//             isDown = true;
-//         }
-    
-//         function handleMouseup(e) {
-//             e.preventDefault();
-//             e.stopPropagation();
-//             isDown = false;
-//         }
-    
-//         function handleMousemove(e) {
-//             e.preventDefault();
-//             e.stopPropagation();
-    
-//             if (!isDown) {
-//                 return;
-//             }
-    
-//             var mouseX = e.clientX - offsetX;
-//             var mouseY = e.clientY - offsetY;
-    
-//             ctx.beginPath();
-//             ctx.moveTo(lastX, lastY);
-//             ctx.lineTo(mouseX, mouseY);
-//             ctx.stroke();
-    
-//             lastX = mouseX;
-//             lastY = mouseY;
-//         }
-//     }
-// }
 function downloadCanvas(elLink) {
+    drawImage();
+    for (let i = 0; i < gMeme.txts.length; i++) {
+        var text = gMeme.txts[i];
+        gCtx.fillStyle = `${text.color}`
+        gCtx.font = `${text.size}px Impact`
+        gCtx.strokeStyle = 'black';
+        gCtx.lineWidth = 3;
+        gCtx.strokeText(text.text, text.x, text.y);
+        gCtx.fillText(text.text, text.x, text.y);
+    
+    }
     elLink.href = gCanvas.toDataURL();
     elLink.download = 'my-meme.jpg';
-
 }
+
+
 
 
