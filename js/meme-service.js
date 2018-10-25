@@ -14,17 +14,17 @@ function drawImage() {
     img.src = imgUrl;
 
 
-        // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
+    // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
 
-        var hRatio = gCanvas.width / img.width;
-        var vRatio = gCanvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
-        gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
+    var hRatio = gCanvas.width / img.width;
+    var vRatio = gCanvas.height / img.height;
+    var ratio = Math.min(hRatio, vRatio);
+    gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
 
 }
 
 function onSubmit(ev, txt) {
-    var y = gMeme.txts.length * 120 + 40;
+    var y = gMeme.txts[gTextFocus].y;
     ev.preventDefault();
     var txt = {
         text: $("#theText").val(),
@@ -33,27 +33,25 @@ function onSubmit(ev, txt) {
         size: $("#sizeFont").val(),
         align: 'center',
         color: $("#theColor").val()
-       
+
     }
     gMeme.txts[gTextFocus] = txt;
     renderCanvas();
 }
 
 //TODO: spin txt
-function spinTxt(){
-    ctx.rotate(Math.PI*2/(i*6));
+function spinTxt() {
+    ctx.rotate(Math.PI * 2 / (i * 6));
 }
 
 function capitalLetter() {
-    //TODO: generalize to more than one text- every time when use render need  to use clear rect()
-   gMeme.txts[0].text = gMeme.txts[0].text.toUpperCase();
-   renderCanvas();    
+    gMeme.txts[gTextFocus].text = gMeme.txts[gTextFocus].text.toUpperCase();
+    renderCanvas();
 }
 
 function lowerLetter() {
-    //TODO: generalize to more than one text- every time when use render need  to use clear rect()
-   gMeme.txts[0].text = gMeme.txts[0].text.toLowerCase();
-   renderCanvas();    
+    gMeme.txts[gTextFocus].text = gMeme.txts[gTextFocus].text.toLowerCase();
+    renderCanvas();
 }
 
 // function centerTxt(){
@@ -64,22 +62,31 @@ function lowerLetter() {
 
 
 function addText(txt) {
-
     var elInput = document.querySelector('.memeText');
     elInput.value = '';
-    gy = gy + 100;
+
+    if (gMeme.txts.length <= 1) { gy = gy + 250 }
+    else if (gMeme.txts.length === 2) {
+            var tempY = gMeme.txts[0].y;
+            gy = tempY + 80;
+        }
+    else gy = gy + 80
+
     gMeme.txts.push({
         text: txt,
         x: 40,
         y: gy,
         size: 40,
         align: 'left',
-        color: 'red'
+        color: 'white'
     });
 
     if (gMeme.txts.length === 0) renderCanvas();
-    else {gTextFocus++;
-    renderCanvas()}
+    else {
+        gTextFocus++;
+        renderCanvas()
+    }
+
 }
 
 function getImgs() {
@@ -104,7 +111,7 @@ function createImg(id) {
         id: id,
         url: `meme-imgs/${id}.jpg`,
         keywords: [],
-        
+
     }
     return img;
 }

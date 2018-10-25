@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/gallery-imgs.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
 
 
     <title>Meme generator</title>
@@ -16,8 +17,22 @@
 
 <body onload="init()">
 
-    <header class="main-nav-bar">
+    <!-- <header class="main-nav-bar">
         <h1>Memes generator</h1>
+    </header> -->
+    <header>
+            <section class="top-nav" id="top-nav">
+                <div class="top-nav-content container flex space-between align-center ">
+                    <div class="top-nav-logo logo" id="nav-logo" title="" alt="Meme-generatoe">Meme Generator</div>
+    
+                    <nav class="main-nav flex align-center">
+                        <a href="#" class="main-nav-item">GALLERY</a>
+                        <a href="#" class="main-nav-item">ABOUT</a>
+                        <a href="#" class="main-nav-item">GET IN TOUCH</a>
+                    </nav>
+                </div>
+                <!-- <button class="menu-icon" onclick="toggleMenu()">☰</button> -->
+            </section>
     </header>
 
 
@@ -30,34 +45,36 @@
     </div>
 
     <div class="canvas-control-container flex space-between">
-            <div class="canvas-container">
-            <canvas  id="canvas">Upgrade your browser to enjoy Canvas</canvas>
+        <div class="canvas-container">
+            <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
 
 
-            </div>
-            <div class="control-box">
-                <ul>
-                    <input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
-                    <button id="submit" class = "addText" onclick="addText(value)">Add text</button><button id="submit" onclick="onUpdate()">Update</button>
-                    <button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up" onclick="onKeyUp()">↑</button>
-                    <!-- <button class="btn-paint" onclick="drowOnMeme()">✏️</button> -->
-                    <li><input id="theColor" type="color" value="#ff0000"></li>
-                    <li><input id="sizeFont" type="range" min=10 max=50 step="1"></li>
-                    <!-- <button class="showSize"> </button> -->
-                    <li><button onclick="capitalLetter()">A</button><button onclick="lowerLetter()">a</button></li>
-                    <!-- <li><button onclick="centerTxt()"><i class="fas fa-align-center"></i></button></li> -->
-                </ul>
-                    
-            </div>
+        </div>
+        <div class="control-box">
+            <ul>
+                <input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
+                <button id="submit" class="addText" onclick="addText(value)">Add text</button>
+                <!-- <button id="submit" onclick="onUpdate()">Update</button> -->
+                <button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up" onclick="onKeyUp()">↑</button>
+                <!-- <button class="btn-paint" onclick="drowOnMeme()">✏️</button> -->
+                <li><input id="theColor" type="color" value="#ff0000"></li>
+                <li><input id="sizeFont" type="range" min=10 max=50 step="1"></li>
+                <!-- <button class="showSize"> </button> -->
+                <li><button onclick="capitalLetter()">A</button><button onclick="lowerLetter()">a</button></li>
+                <li><button><a onclick="downloadCanvas(this)">Download</a></button></li>
+                <li><button onclick="centerTxt()"></i></button></li>
+            </ul>
+
+        </div>
     </div>
 
 
-    <section class="imgs-container flex flex-wrap flex-direction center" ></section>
+    <section class="imgs-container flex flex-wrap flex-direction center"></section>
 
 
 
-           
-        </div>
+
+    </div>
     </div>
 
     <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
@@ -69,7 +86,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <!-- <script src="js/canvas-service.js"></script> -->
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>

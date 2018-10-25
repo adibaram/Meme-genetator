@@ -28,6 +28,8 @@
 
 .align-center {
     align-items: center;
+    height: 100%;
+     
 }
 
 .grid {

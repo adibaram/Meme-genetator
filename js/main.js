@@ -79,7 +79,7 @@ function onSearchImg(keyword, event) {
         for (var i = 0; i < image.keywords.length; i++) {
             if (image.keywords[i] === keyword) {
                 elImg.style.display = 'block';
-                gSearchWord[0].count ++;
+                // gSearchWord[0].count ++;
 
                 return true;
             }
@@ -101,8 +101,8 @@ function createCanvas() {
 
     if (window.innerWidth <= 550) {
         gCanvas = document.querySelector('#canvas');
-        gCanvas.width = window.innerWidth * 5 / 6;
-        gCanvas.height = window.innerHeight * 5 / 6;
+        gCanvas.width = window.innerWidth * 98 / 100;
+        gCanvas.height = window.innerHeight * 98 / 100;
         gCtx = gCanvas.getContext('2d');
 
     }
@@ -114,8 +114,7 @@ function onKeyUp() {
     console.log('gFocus', gTextFocus);
     changeTextFocus();
     
-}
-    
+}   
     
 function onKeyDown() {
         if (gTextFocus === gMeme.txts.length-1) return
@@ -154,6 +153,12 @@ function addArrows() {
     var elArrowDown = document.querySelector('.btn-arrow-down');
     elArrowDown.style.display = 'inline';
     elArrowUp.style.display = 'inline';
+}
+
+function downloadCanvas(elLink) {
+    elLink.href = gCanvas.toDataURL();
+    elLink.download = 'my-meme.jpg';
+
 }
 
 
