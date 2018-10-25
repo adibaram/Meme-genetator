@@ -14,6 +14,10 @@ body{
     background-color: lightgray;
 }
 
+ul {
+    list-style-type: none;
+}
+
 footer{
     background-color: #323232;
     color: #e0e0e0;
@@ -68,12 +72,16 @@ img:hover {
     background-color:lightcyan;
 }
 
-.btn-arrow-down {
+.focusSelect{
+    display: none;
+}
+
+/* .btn-arrow-down {
     display: none;
 }
 .btn-arrow-up {
     display: none;
-}
+} */
 
 
  @media (max-width: 550px) {
