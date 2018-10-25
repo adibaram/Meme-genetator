@@ -23,59 +23,6 @@ var gTexts;
 // this var will hold the index of the hit-selected text
 var selectedText = -1;
 
-<<<<<<< HEAD
-function createCanvas() {
-    gCanvas = document.querySelector('#canvas');
-    gCanvas.width = window.innerWidth * 1/2 ;
-    gCanvas.height = window.innerHeight* 1/2  ;
-    gCtx = gCanvas.getContext('2d');
-
-    if (window.innerWidth <= 600) {
-        gCanvas = document.querySelector('#canvas');
-        gCanvas.width = window.innerWidth * 1/2;
-        gCanvas.height = window.innerHeight * 1/2;
-        gCtx = gCanvas.getContext('2d');
-
-    }
-
-    // variables used to get mouse position on the canvas
-    // var $canvas = $("#canvas");
-    var canvas = $("#canvas");
-    console.log(canvas)
-    canvasOffset = canvas.offset();
-    offsetX = canvasOffset.left;
-    offsetY = canvasOffset.top;
-    scrollX = canvas.scrollLeft();
-    scrollY = canvas.scrollTop();
-}
-
-function drawImage() {
-    var img = new Image()
-    let imgUrl = getImgUrl()
-    createCanvas(img)
-
-    img.onload = function () {
-        // gCtx.drawImage(img, 0,0, gCanvas.width, gCanvas.height)
-        var hRatio = gCanvas.width / img.width;
-        var vRatio = gCanvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
-        gCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio);
-    }
-    img.src = imgUrl;
-
-}
-
-function drawMovableText() {
-    
-    // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-
-    for (var i = 0; i < texts.length; i++) {
-        var text = texts[i];
-        gCtx.fillText(text.text, text.x, text.y);
-    }
-}
-=======
->>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 
 // test if x,y is inside the bounding box of texts[textIndex]
 function textHittest(x, y, textIndex) {

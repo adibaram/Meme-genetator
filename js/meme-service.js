@@ -48,11 +48,7 @@ function onSubmit(ev, txt) {
 
 
 
-<<<<<<< HEAD
-// //TODO: spin txt
-=======
 //TODO: spin txt
->>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 // function spinTxt() {
 //     ctx.rotate(Math.PI * 2 / (i * 6));
 // }
@@ -184,45 +180,6 @@ function updateFontSize(size) {
     renderCanvas();
 }
 
-<<<<<<< HEAD
-function onKeyDown() {
-
-}
-
-function onKeyUp() {
-    
-}
-
-function onKeyRight() {
-    
-}
-
-function onKeyLeft() {
-    
-}
-
-// function saveWords() {
-//     localStorage.setItem(KEY_USERS, JSON.stringify(gUserSearchWord))
-// }
-
-// function getFromStorage(key) {
-//     var val = localStorage.getItem(key);
-//     return JSON.parse(val)
-// }
-
-function responMain() {
-    var x = document.getElementById("top-navRespo");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
-
-
-=======
->>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 
 
 
