@@ -53,9 +53,12 @@
                     <li><input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
                         <button id="submit" class="addText" onclick="addText(value)">Add text</button></li>
                     <li><button class="focusSelect" onclick="changeFocus()">Switch</button></li>
+<<<<<<< HEAD
                     <li><button class="btn-arrow-down" onclick="onKeyDown()">↓</button><button class="btn-arrow-up"
                             onclick="onKeyUp()">↑</button><button class="btn-arrow-left" onclick="onKeyLeft()">←</button><button
                             class="btn-arrow-right" onclick="onKeyRight()">→</button></li>
+=======
+>>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
                     <!-- <button class="btn-paint" onclick="drowOnMeme()">✏️</button> -->
                     <li><input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)"></li>
                     <li><input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)"></li>
@@ -65,8 +68,13 @@
             </div>
         </div>
 
+<<<<<<< HEAD
 
         <section class="imgs-container flex flex-wrap flex-direction center" id="gallery"></section>
+=======
+    <div><a onclick="downloadCanvas(this)">Download</a></div>
+    <section class="imgs-container flex flex-wrap flex-direction center"></section>
+>>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 
         <button class="backBtn" onclick="backToGallery()">Back to Gallery</button>
     </main>
@@ -114,9 +122,9 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <!-- <script src="js/canvas-service.js"></script> -->
+    crossorigin="anonymous"></script>
     <script src="js/meme-service.js"></script>
+    <script src="js/canvas-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

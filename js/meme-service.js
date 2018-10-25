@@ -5,6 +5,16 @@ var gMeme = {
     txts: []
 }
 
+var gTextFocus = 0;
+
+function getMemeTxts(){
+    return gMeme.txts;
+}
+
+function getTxtFocus() {
+    return gTextFocus;
+}
+
 
 var gy = gMeme.txts.length * 120 + 40;
 
@@ -38,7 +48,11 @@ function onSubmit(ev, txt) {
 
 
 
+<<<<<<< HEAD
 // //TODO: spin txt
+=======
+//TODO: spin txt
+>>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 // function spinTxt() {
 //     ctx.rotate(Math.PI * 2 / (i * 6));
 // }
@@ -53,11 +67,6 @@ function lowerLetter() {
     renderCanvas();
 }
 
-// function centerTxt(){
-//     //TODO: text align
-//     // gMeme.txts[0].x = 0;
-//     renderCanvas();
-// }
 
 function addText(txt) {
     var elInput = document.querySelector('.memeText');
@@ -175,6 +184,7 @@ function updateFontSize(size) {
     renderCanvas();
 }
 
+<<<<<<< HEAD
 function onKeyDown() {
 
 }
@@ -211,6 +221,8 @@ function responMain() {
 
 
 
+=======
+>>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 
 
 

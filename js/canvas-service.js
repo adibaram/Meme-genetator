@@ -1,20 +1,15 @@
 'use strict';
 
-
-//TODO - render canvas - drow img, loop on gTxt array.
-//TODO - change color on the moadel anf then render canvas
-//TODO - div background-img background size cover (instead of current gallery)
-
-var gCanvas;
-var gCtx;
+// var gCanvas;
+// var gCtx;
 
 // variables used to get mouse position on the canvas
-// var $canvas = $("#canvas");
-var canvasOffset;
-var offsetX;
-var offsetY;
-var scrollX;
-var scrollY;
+var $canvas = $("#canvas");
+var canvasOffset = $canvas.offset();
+var offsetX = canvasOffset.left;
+var offsetY = canvasOffset.top;
+var scrollX = $canvas.scrollLeft();
+var scrollY = $canvas.scrollTop();
 
 // variables to save last mouse position
 // used to see how far the user dragged the mouse
@@ -23,11 +18,12 @@ var startX;
 var startY;
 
 // an array to hold text objects
-var texts = [];
+var gTexts;
 
 // this var will hold the index of the hit-selected text
 var selectedText = -1;
 
+<<<<<<< HEAD
 function createCanvas() {
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = window.innerWidth * 1/2 ;
@@ -78,28 +74,43 @@ function drawMovableText() {
         gCtx.fillText(text.text, text.x, text.y);
     }
 }
+=======
+>>>>>>> f0759af40ce4073de2a02969d093791e4c770a84
 
 // test if x,y is inside the bounding box of texts[textIndex]
 function textHittest(x, y, textIndex) {
-    var text = texts[textIndex];
-    return (x >= text.x && x <= text.x + text.width && y >= text.y - text.height && y <= text.y);
+    var text = gTexts[textIndex];
+    var textWidth = gCtx.measureText(text).width;
+    return (x >= text.x && x <= text.x + textWidth && y >= text.y - text.size && y <= text.y);
 }
+
+
 
 // handle mousedown events
 // iterate through texts[] and see if the user
 // mousedown'ed on one of them
 // If yes, set the selectedText to the index of that text
 function handleMouseDown(e) {
-    console.log('mouse down');
-    e.preventDefault();
-    startX = parseInt(e.clientX - offsetX);
-    startY = parseInt(e.clientY - offsetY);
-    // Put your mousedown stuff here
-    for (var i = 0; i < texts.length; i++) {
+    handleDragStart(e);
+}
+
+function handleDragStart(e) {
+    gTexts = getMemeTxts();
+    console.log(gTexts, 'in handle mouse down')
+    startX = parseInt(e.clientX - gCanvas.offsetLeft);
+    startY = parseInt(e.clientY - gCanvas.offsetTop);
+    //mousedown 
+    for (var i = 0; i < gTexts.length; i++) {
         if (textHittest(startX, startY, i)) {
             selectedText = i;
+            console.log('selected:', selectedText);
+            return;
         }
     }
+}
+
+function handleToucDown(event) {
+    handleDragStart(event.touches[0]);
 }
 // done dragging
 function handleMouseUp(e) {
@@ -123,20 +134,71 @@ function handleMouseMove(e) {
     if (selectedText < 0) {
         return;
     }
+    // debugger
     e.preventDefault();
-     var mouseX = parseInt(e.clientX - offsetX);
-     var mouseY = parseInt(e.clientY - offsetY);
+    var mouseX = parseInt(e.clientX - gCanvas.offsetLeft);
+    console.log('mouseX', mouseX);
+    var mouseY = parseInt(e.clientY - gCanvas.offsetTop);
+    console.log('mouseY', mouseY);
 
-    // Put your mousemove stuff here
+    // mousemove 
     var dx = mouseX - startX;
     var dy = mouseY - startY;
     startX = mouseX;
     startY = mouseY;
 
-    var text = texts[selectedText];
+    var text = gTexts[selectedText];
+    console.log('text', text);
     text.x += dx;
     text.y += dy;
-    drawMovableText();
+    renderMove();
+}
+
+function handleTouchMove(e) {
+    if (selectedText < 0) {
+        return;
+        // debugger
+    }
+    var touch = e.touches[0];
+    e.preventDefault();
+    var mouseX = parseInt(touch.clientX - gCanvas.offsetLeft);
+    console.log('mouseX', mouseX);
+    var mouseY = parseInt(touch.clientY - gCanvas.offsetTop);
+    console.log('mouseY', mouseY);
+
+    // mousemove 
+    var dx = mouseX - startX;
+    var dy = mouseY - startY;
+    startX = mouseX;
+    startY = mouseY;
+
+    var text = gTexts[selectedText];
+    console.log('text', text);
+    text.x += dx;
+    text.y += dy;
+    renderMove();
+}
+
+
+
+function renderMove() {
+
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    drawImage();
+    for (let i = 0; i < gMeme.txts.length; i++) {
+        var text = gTexts[selectedText];;
+        gCtx.fillStyle = `${text.color}`
+        gCtx.font = `${text.size}px Impact`
+        gCtx.strokeStyle = 'black';
+        gCtx.lineWidth = 3;
+        gCtx.strokeText(text.text, text.x, text.y);
+        gCtx.fillText(text.text, text.x, text.y);
+
+        if (i >= 1) {
+            addSelector();
+            changeTextFocus();
+        }
+    }
 }
 
 // listen for mouse events
@@ -153,36 +215,26 @@ $("#canvas").mouseout(function (e) {
     handleMouseOut(e);
 });
 
+
 $("#submit").click(function () {
 
-    // calc the y coordinate for this text on the canvas
-    var y = texts.length * 40 + 40;
-
-    // get the text from the input element
-    var text = {
-        text: $("#theText").val(),
-        x: 40,
-        y: y
-    };
-
-    // calc the size of this text for hit-testing purposes
-    gCtx.font = "40px Impact";
-    text.width = gCtx.measureText(text.text).width;
-    text.height = 40;
-
-    // put this new text in the texts array
-    texts.push(text);
-
     // redraw everything
-    drawMovableText();
+    renderCanvas();
 
 });
 
-function drawText(txt, x, y) {
 
-    gCtx.fillStyle = 'white'
-    gCtx.font = '50px Impact'
-    gCtx.fillText(txt, x, y)
-}
+$("#canvas").on({
+    'touchstart': function (event) {
+        handleToucDown(event);
+        //you could do `$(this).trigger('touchmove', e)` but a conventional function call keeps `move` simple.
+    },
+    'touchmove': function (e) {
+        handleTouchMove(e);
+    },
 
+    'touchend': function (e) {
+        handleMouseUp(e);
+    }
+});
 
