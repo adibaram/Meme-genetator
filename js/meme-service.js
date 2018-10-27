@@ -8,7 +8,9 @@ var gMeme = {
 
 var gTextFocus = 0;
 
-function getMemeTxts(){
+var gy = gMeme.txts.length * 120 + 40;
+
+function getMemeTxts() {
     return gMeme.txts;
 }
 
@@ -16,8 +18,6 @@ function getTxtFocus() {
     return gTextFocus;
 }
 
-
-var gy = gMeme.txts.length * 120 + 40;
 
 function drawImageIn() {
     // clear whatever shows before on canvas
@@ -35,6 +35,7 @@ function drawImageIn() {
 }
 
 function onSubmit(ev, txt) {
+    //debugger;
     var y = gMeme.txts[gTextFocus].y;
     var txt = {
         text: $("#theText").val(),
@@ -69,23 +70,27 @@ function lowerLetter() {
 
 function addText(txt) {
     var elInput = document.querySelector('.memeText');
-    elInput.value = '';
+
 
     if (gMeme.txts.length <= 1) { gy = gy + 250 }
     else if (gMeme.txts.length === 2) {
-            var tempY = gMeme.txts[0].y;
-            gy = tempY + 80;
-        }
+        var tempY = gMeme.txts[0].y;
+        gy = tempY + 80;
+    }
     else gy = gy + 80
 
-    gMeme.txts.push({
-        text: txt,
-        x: 40,
-        y: gy,
-        size: 40,
-        align: 'left',
-        color: 'white'
-    });
+    if (elInput.value === '' || elInput.value === ' ') return;
+    else {
+        gMeme.txts.push({
+            text: txt,
+            x: 40,
+            y: gy,
+            size: 40,
+            align: 'left',
+            color: '#FFFFFF'
+
+        })
+    };
 
     // addToList();
     if (gMeme.txts.length === 0) renderCanvas();
@@ -93,6 +98,9 @@ function addText(txt) {
         gTextFocus++;
         renderCanvas()
     }
+
+
+    elInput.value = '';
 
 }
 
@@ -108,7 +116,7 @@ function setCurrMeme(id) {
         y: 40,
         size: 40,
         align: 'left',
-        color: 'red'
+        color: '#FFFFFF'
     }];
     return gMeme;
 }
@@ -118,7 +126,7 @@ function createImg(id) {
         id: id,
         url: `meme-imgs/${id}.jpg`,
         keywords: [],
-        disply:true
+        disply: true
     }
     return img;
 }
@@ -167,27 +175,50 @@ function addKeywords(id) {
 
 function updateColor(color) {
     var text = gMeme.txts[gTextFocus];
-    text.color = color; 
+    text.color = color;
     gCtx.fillStyle = `${text.color}`
     gCtx.font = `${text.size}px Impact`
     gCtx.strokeStyle = 'black';
-    gCtx.lineWidth = 3;
+    gCtx.lineWidth = 5;
     gCtx.strokeText(text.text, text.x, text.y);
     gCtx.fillText(text.text, text.x, text.y);
 }
 
 function updateFontSize(size) {
     var text = gMeme.txts[gTextFocus];
-    text.size = size; 
+    text.size = size;
     drawImageIn();
     renderCanvas();
 }
 
-function initializeDisply(){
+function initializeDisply() {
     gImgs.filter(function (img) {
         img.disply = true;
     });
-} 
+}
+
+function deleteCurrTxt() {
+    for (let i = 0; i < gMeme.txts.length; i++) {
+        let index = gMeme.txts.indexOf(gMeme.txts[i]);
+        let elInput = document.querySelector('.memeText');
+        if (i === gTextFocus) {
+                gMeme.txts.splice(index, 1);
+                drawImageIn();
+                renderCanvas();
+                elInput.value = ''; 
+                gTextFocus = -1;
+                return;
+                
+        }
+    }
+    checkTxtsNum();
+}
+
+
+function checkTxtsNum() {
+    if (gMeme.txts.length === 0) gy = gMeme.txts.length * 120 + 40;
+}
+
 
 
 // function toggleMenu() {
@@ -195,7 +226,3 @@ function initializeDisply(){
 //     console.log(mainMenu);
 //     mainMenu.classList.toggle('open');
 // }
-
-
-
-

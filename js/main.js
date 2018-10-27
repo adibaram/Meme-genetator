@@ -32,7 +32,7 @@ function renderCanvas(){
         gCtx.fillStyle = `${text.color}`
         gCtx.font = `${text.size}px Impact`
         gCtx.strokeStyle = 'black';
-        gCtx.lineWidth = 3;
+        gCtx.lineWidth = 5;
         gCtx.strokeText(text.text, text.x, text.y);
         gCtx.fillText(text.text, text.x, text.y);
 
@@ -70,9 +70,27 @@ function backToGallery() {
     document.querySelector('.control-box').style.display = 'none';
     document.querySelector('.imgs-container').style.display = 'block';
     document.querySelector('.search-bar').style.display = 'block';
+    gMeme = {
+        selectedImgId: 0,
+        txts: [{
+            text: $("#theText").val(),
+            x: 40,
+            y: gy,
+            size: $("#sizeFont").val(),
+            align: 'center',
+            color: $("#theColor").val()}],
+        disply: true
+    }
+    var elCurrColor = document.getElementById('theColor');
+    var elInputTxt = document.getElementById('theText');
+    elCurrColor.value = '#FFFFFF';
+    elInputTxt.value = '';
+    gTextFocus = 0;
+    gy = gMeme.txts.length * 120 + 40;
+
     initializeDisply();
     renderImgsGallery();
-    // init();
+
 
 }
 
@@ -109,19 +127,26 @@ function createCanvas() {
 
 
 function changeTextFocus() {
-    
+
+    var elCurrColor = document.getElementById('theColor');
+    var elInputTxt = document.getElementById('theText');
+    drawImageIn();
+
     for (let i = 0; i < gMeme.txts.length; i++) {
         var text = gMeme.txts[i];
         var iString = i.toString();
         gCtx.fillStyle = `${text.color}`
         gCtx.font = `${text.size}px Impact`
         gCtx.strokeStyle = 'black';
-        gCtx.lineWidth = 3;
+        gCtx.lineWidth = 5;
         gCtx.strokeText(text.text, text.x, text.y);
         gCtx.fillText(text.text, text.x, text.y);
 
         if (iString === gTextFocus || i === gTextFocus) {
+            gCtx.lineWidth = 5;
             gCtx.strokeStyle = 'blue';
+            elCurrColor.value = text.color;
+            elInputTxt.value = text.text;
             gCtx.strokeText(text.text, text.x, text.y);
             gCtx.fillText(text.text, text.x, text.y);
         }
@@ -152,7 +177,7 @@ function downloadCanvas(elLink) {
         gCtx.fillStyle = `${text.color}`
         gCtx.font = `${text.size}px Impact`
         gCtx.strokeStyle = 'black';
-        gCtx.lineWidth = 3;
+        gCtx.lineWidth = 5;
         gCtx.strokeText(text.text, text.x, text.y);
         gCtx.fillText(text.text, text.x, text.y);
     

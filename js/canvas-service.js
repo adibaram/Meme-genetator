@@ -38,10 +38,15 @@ function textHittest(x, y, textIndex) {
 // mousedown'ed on one of them
 // If yes, set the selectedText to the index of that text
 function handleMouseDown(e) {
+
     handleDragStart(e);
 }
 
 function handleDragStart(e) {
+    //debugger;
+    var elCurrColor = document.getElementById('theColor');
+    var elInputTxt = document.getElementById('theText');
+
     gTexts = getMemeTxts();
     console.log(gTexts, 'in handle mouse down')
     startX = parseInt(e.clientX - gCanvas.offsetLeft);
@@ -50,9 +55,21 @@ function handleDragStart(e) {
     for (var i = 0; i < gTexts.length; i++) {
         if (textHittest(startX, startY, i)) {
             selectedText = i;
+            gTextFocus = i;
+            drawImageIn(); 
+            renderCanvas();
+            elCurrColor.value = gTexts[i].color;
+            elInputTxt.value = gTexts[i].text;
             console.log('selected:', selectedText);
             return;
         }
+        else {
+            gTextFocus = -1;
+            drawImageIn(); 
+            renderCanvas();
+            elInputTxt.value = '';
+        }
+
     }
 }
 

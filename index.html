@@ -42,7 +42,8 @@
         </div>
 
         <div class="canvas-control-container flex justify-content-center row">
-            <div class="canvas-container col-md-5 col-12">
+            <!-- <div class="canvas-container col-md-5 col-12"> -->
+            <div class="canvas-container">
                 <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
 
             </div>
@@ -50,6 +51,7 @@
                 <ul>
                     <li><input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
                         <button id="submit" class="addText" onclick="addText(value)">Add text</button></li>
+                    <li><button class="delete-btn" onclick="deleteCurrTxt()"><i class="far fa-trash-alt"></i></button></li>
                     <li><button class="focusSelect" onclick="changeFocus()">Switch</button></li>
                     <li><input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)"></li>
                     <li><input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)"></li>
