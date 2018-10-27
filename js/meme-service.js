@@ -2,7 +2,8 @@
 var gImgs = [];
 var gMeme = {
     selectedImgId: 0,
-    txts: []
+    txts: [],
+    disply: true
 }
 
 var gTextFocus = 0;
@@ -18,12 +19,14 @@ function getTxtFocus() {
 
 var gy = gMeme.txts.length * 120 + 40;
 
-function drawImage() {
+function drawImageIn() {
+    // clear whatever shows before on canvas
+    gCanvas.getContext('2d').clearRect(0, 0, gCanvas.width, gCanvas.height);
+    //  draw the new img
     var currImg = gImgs[gMeme.selectedImgId];
     var img = new Image()
     let imgUrl = currImg.url;
     img.src = imgUrl;
-
     var hRatio = gCanvas.width / img.width;
     var vRatio = gCanvas.height / img.height;
     var ratio = Math.min(hRatio, vRatio);
@@ -115,7 +118,7 @@ function createImg(id) {
         id: id,
         url: `meme-imgs/${id}.jpg`,
         keywords: [],
-
+        disply:true
     }
     return img;
 }
@@ -176,9 +179,22 @@ function updateColor(color) {
 function updateFontSize(size) {
     var text = gMeme.txts[gTextFocus];
     text.size = size; 
-    drawImage();
+    drawImageIn();
     renderCanvas();
 }
+
+function initializeDisply(){
+    gImgs.filter(function (img) {
+        img.disply = true;
+    });
+} 
+
+
+// function toggleMenu() {
+//     var mainMenu = document.getElementById('mainMenu');
+//     console.log(mainMenu);
+//     mainMenu.classList.toggle('open');
+// }
 
 
 

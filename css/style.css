@@ -1,8 +1,8 @@
 /* base */
 
 @font-face {
-    font-family:oswald;
-    src: url(../fonts/Oswald-Bold.ttf);   
+    font-family:Krub;
+    src: url(../fonts/Krub-Medium.ttf);   
 }
 
 *{
@@ -38,7 +38,7 @@ body{
     height: 130px;
     box-shadow: inset 0 -6px 0 #1e1e1e;
     background-color: #292929;
-    font-family: oswald;  
+    font-family: Krub;  
 }
 
 .logo{
@@ -125,10 +125,9 @@ img:hover {
 .control-box {
     display:none; 
     height: 200px;
-    border: 1px solid black;
-    background-color:#FFB85F;
+    background-color: rgba(112,122,238,0.4);
     text-align: center;
-    
+    padding:7px;
 }
 
 .focusSelect{
@@ -161,6 +160,15 @@ button a {
     padding: 10px;
 }
 
+a #nax-box{
+    margin-left: 7px;
+}
+  
+a #nav-brand-pad{
+    padding-right: 7px;
+}
+
+
 
  @media screen and (max-width: 600px) {
     
@@ -180,4 +188,5 @@ button a {
         z-index: 10;  
     }
 }
-  
+
+

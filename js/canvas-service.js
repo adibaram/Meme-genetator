@@ -131,7 +131,7 @@ function handleTouchMove(e) {
 function renderMove() {
 
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-    drawImage();
+    drawImageIn();
     for (let i = 0; i < gMeme.txts.length; i++) {
         var text = gTexts[selectedText];;
         gCtx.fillStyle = `${text.color}`

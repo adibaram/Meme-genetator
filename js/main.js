@@ -18,16 +18,15 @@ function setMemeImg(id) {
     document.querySelector('.search-bar').style.display = 'none';
     document.querySelector('.control-box').style.display = 'block';
     setCurrMeme(id);
-    drawImage();
+    drawImageIn();
     gTexts = getMemeTxts();
     console.log(gTexts);
 }
 
 
 
-function renderCanvas() {
-    
-    drawImage();
+function renderCanvas(){
+    drawImageIn();
     for (let i = 0; i < gMeme.txts.length; i++) {
         var text = gMeme.txts[i];
         gCtx.fillStyle = `${text.color}`
@@ -51,26 +50,28 @@ function renderImgsGallery() {
     var strHtml = `<ul id="hexGrid">`;
 
     var strHtmls = imgs.map(function (img) {
-        return `
-        <li class="hex">
-          <div class="hexIn">
-            <a class="hexLink" href="#">
-              <img src="meme-imgs/${img.id}.jpg" class="img img-${img.id}" onclick="setMemeImg('${img.id}')">
-            </a>
-          </div>
-        </li>`
-
-
+        if(img.disply){
+            return `
+            <li class="hex">
+            <div class="hexIn">
+                <a class="hexLink" href="#">
+                <img src="meme-imgs/${img.id}.jpg" class="img img-${img.id}" onclick="setMemeImg('${img.id}')">
+                </a>
+            </div>
+            </li>`
+        }
     });
     elGallery.innerHTML = strHtml + strHtmls.join('')+`</ul>`;
 }
 
 
 function backToGallery() {
-    // document.querySelector('#canvas').style.display = 'none';
+    document.querySelector('#canvas').style.display = 'none';
+    document.querySelector('.control-box').style.display = 'none';
     document.querySelector('.imgs-container').style.display = 'block';
     document.querySelector('.search-bar').style.display = 'block';
-    document.querySelector('.sideContainer').style.display = 'none';
+    initializeDisply();
+    renderImgsGallery();
     // init();
 
 }
@@ -79,22 +80,17 @@ function onSearchImg(keyword, event) {
     var imgs = getImgs();
     var imgsFilter = imgs.filter(function (img) {
         var image = img;
-        var elImg = document.querySelector(`.img-${img.id}`);
         for (var i = 0; i < image.keywords.length; i++) {
             if (image.keywords[i] === keyword) {
-                elImg.style.display = 'block';
-                // gSearchWord[0].count ++;
-
-                return true;
+                img.disply = true;
+                break;}
+            else{
+                img.disply = false
             }
-            else {
-                elImg.style.display = 'none';
-                continue
-            };
-        }
+        }   
     });
     console.log(imgsFilter);
-    return imgsFilter;
+    renderImgsGallery();
 }
 
 function createCanvas() {
@@ -106,9 +102,8 @@ function createCanvas() {
     if (window.innerWidth <= 550) {
         gCanvas = document.querySelector('#canvas');
         gCanvas.width = window.innerWidth * 98 / 100;
-        gCanvas.height = window.innerHeight * 98 / 100;
+        gCanvas.height = window.innerHeight * 45 / 100;
         gCtx = gCanvas.getContext('2d');
-
     }
 }
 
@@ -151,7 +146,7 @@ function addSelector() {
 }
 
 function downloadCanvas(elLink) {
-    drawImage();
+    drawImageIn();
     for (let i = 0; i < gMeme.txts.length; i++) {
         var text = gMeme.txts[i];
         gCtx.fillStyle = `${text.color}`
@@ -165,7 +160,3 @@ function downloadCanvas(elLink) {
     elLink.href = gCanvas.toDataURL();
     elLink.download = 'my-meme.jpg';
 }
-
-
-
-
