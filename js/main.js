@@ -81,7 +81,7 @@ function onSearchImg(keyword, event) {
     var imgsFilter = imgs.filter(function (img) {
         var image = img;
         for (var i = 0; i < image.keywords.length; i++) {
-            if (image.keywords[i] === keyword) {
+            if (image.keywords[i].toUpperCase() === keyword.toUpperCase()) {
                 img.disply = true;
                 break;}
             else{

@@ -33,15 +33,13 @@
                 </div>
             </div>
     </nav>
-
-    <div class="search-container container">
+    <div class="container search-container ">
         <div class="search-list"></div>
         <div class="search-bar">
             <input type="search" id="mySearch" placeholder="Search for image" value="" onchange="onSearchImg(this.value ,event)">
             <button class="searchBtn"> Search</button>
         </div>
     </div>
-
     <div class="canvas-control-container flex justify-content-center row">
         <div class="canvas-container">
             <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
@@ -51,21 +49,20 @@
             <ul>
                 <li>
                     <div class="input-group mb-3">
-                        <input type=" text" class="form-control memeText" id="theText" aria-label="Recipient's username"
-                            aria-describedby="button-addon2" oninput="onSubmit(event,value)">
+                            <input type=" text" class="form-control memeText" id="theText"
+                        aria-label="Recipient's username" aria-describedby="button-addon2" oninput="onSubmit(event,value)">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary addText" type="button" id="button-addon2" onclick="addText(value)">Add
-                                Text</button>
+                            <button class="btn btn-outline-secondary addText" type="button" id="button-addon2" onclick="addText(value)" >Add Text</button>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-secondary" id="focusSelect" onclick="changeFocus()">
-                        <i class="fas fa-exchange-alt focusSelect"></i>
-                    </button>
-                    <button type="button" class="btn btn-secondary">
-                        <input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)">
-                    </button>
+                        <button type="button" class="btn btn-secondary" id="focusSelect" onclick="changeFocus()">
+                            <i class="fas fa-exchange-alt focusSelect"></i>
+                        </button>                              
+                        <button type="button" class="btn btn-secondary" >
+                             <input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)">
+                        </button>  
                 </li>
                 <li>
                     <input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)">
