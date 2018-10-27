@@ -99,7 +99,7 @@ function onSearchImg(keyword, event) {
     var imgsFilter = imgs.filter(function (img) {
         var image = img;
         for (var i = 0; i < image.keywords.length; i++) {
-            if (image.keywords[i] === keyword) {
+            if (image.keywords[i].toUpperCase() === keyword.toUpperCase()) {
                 img.disply = true;
                 break;}
             else{
@@ -120,7 +120,7 @@ function createCanvas() {
     if (window.innerWidth <= 550) {
         gCanvas = document.querySelector('#canvas');
         gCanvas.width = window.innerWidth * 98 / 100;
-        gCanvas.height = window.innerHeight * 45 / 100;
+        gCanvas.height = window.innerHeight * 30 / 100;
         gCtx = gCanvas.getContext('2d');
     }
 }
@@ -166,7 +166,7 @@ if (gIsFocusDown) {
 }
 
 function addSelector() {
-    var elSelector = document.querySelector('.focusSelect');
+    var elSelector = document.querySelector('#focusSelect');
     elSelector.style.display = 'inline';
 }
 

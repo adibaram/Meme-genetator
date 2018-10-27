@@ -72,7 +72,7 @@ function addText(txt) {
     var elInput = document.querySelector('.memeText');
 
 
-    if (gMeme.txts.length <= 1) { gy = gy + 250 }
+    if (gMeme.txts.length <= 1) { gy = gy + 150 }
     else if (gMeme.txts.length === 2) {
         var tempY = gMeme.txts[0].y;
         gy = tempY + 80;
@@ -197,27 +197,27 @@ function initializeDisply() {
     });
 }
 
-function deleteCurrTxt() {
-    for (let i = 0; i < gMeme.txts.length; i++) {
-        let index = gMeme.txts.indexOf(gMeme.txts[i]);
-        let elInput = document.querySelector('.memeText');
-        if (i === gTextFocus) {
-                gMeme.txts.splice(index, 1);
-                drawImageIn();
-                renderCanvas();
-                elInput.value = ''; 
-                gTextFocus = -1;
-                return;
+// function deleteCurrTxt() {
+//     for (let i = 0; i < gMeme.txts.length; i++) {
+//         let index = gMeme.txts.indexOf(gMeme.txts[i]);
+//         let elInput = document.querySelector('.memeText');
+//         if (i === gTextFocus) {
+//                 gMeme.txts.splice(index, 1);
+//                 drawImageIn();
+//                 renderCanvas();
+//                 elInput.value = ''; 
+//                 gTextFocus = -1;
+//                 return;
                 
-        }
-    }
-    checkTxtsNum();
-}
+//         }
+//     }
+//     checkTxtsNum();
+// }
 
 
-function checkTxtsNum() {
-    if (gMeme.txts.length === 0) gy = gMeme.txts.length * 120 + 40;
-}
+// function checkTxtsNum() {
+//     if (gMeme.txts.length === 0) gy = gMeme.txts.length * 120 + 40;
+// }
 
 
 
