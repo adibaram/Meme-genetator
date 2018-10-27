@@ -130,9 +130,10 @@ img:hover {
     padding:7px;
 }
 
-.focusSelect{
+#focusSelect{
     display: none;
 }
+
 li{
     list-style-type: none;
 }
@@ -168,7 +169,22 @@ a #nav-brand-pad{
     padding-right: 7px;
 }
 
+#sizeFont{
+    margin: 10px 0px 10px 2px;
+}
 
+input[type="color"] {
+    border: none;
+    width: 1rem;
+    height: 1rem;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
 
  @media screen and (max-width: 600px) {
     

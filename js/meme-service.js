@@ -8,7 +8,7 @@ var gMeme = {
 
 var gTextFocus = 0;
 
-function getMemeTxts(){
+function getMemeTxts() {
     return gMeme.txts;
 }
 
@@ -73,9 +73,9 @@ function addText(txt) {
 
     if (gMeme.txts.length <= 1) { gy = gy + 250 }
     else if (gMeme.txts.length === 2) {
-            var tempY = gMeme.txts[0].y;
-            gy = tempY + 80;
-        }
+        var tempY = gMeme.txts[0].y;
+        gy = tempY + 80;
+    }
     else gy = gy + 80
 
     gMeme.txts.push({
@@ -118,7 +118,7 @@ function createImg(id) {
         id: id,
         url: `meme-imgs/${id}.jpg`,
         keywords: [],
-        disply:true
+        disply: true
     }
     return img;
 }
@@ -167,7 +167,7 @@ function addKeywords(id) {
 
 function updateColor(color) {
     var text = gMeme.txts[gTextFocus];
-    text.color = color; 
+    text.color = color;
     gCtx.fillStyle = `${text.color}`
     gCtx.font = `${text.size}px Impact`
     gCtx.strokeStyle = 'black';
@@ -178,16 +178,16 @@ function updateColor(color) {
 
 function updateFontSize(size) {
     var text = gMeme.txts[gTextFocus];
-    text.size = size; 
+    text.size = size;
     drawImageIn();
     renderCanvas();
 }
 
-function initializeDisply(){
+function initializeDisply() {
     gImgs.filter(function (img) {
         img.disply = true;
     });
-} 
+}
 
 
 // function toggleMenu() {

@@ -102,7 +102,7 @@ function createCanvas() {
     if (window.innerWidth <= 550) {
         gCanvas = document.querySelector('#canvas');
         gCanvas.width = window.innerWidth * 98 / 100;
-        gCanvas.height = window.innerHeight * 45 / 100;
+        gCanvas.height = window.innerHeight * 30 / 100;
         gCtx = gCanvas.getContext('2d');
     }
 }
@@ -141,7 +141,7 @@ if (gIsFocusDown) {
 }
 
 function addSelector() {
-    var elSelector = document.querySelector('.focusSelect');
+    var elSelector = document.querySelector('#focusSelect');
     elSelector.style.display = 'inline';
 }
 

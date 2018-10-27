@@ -17,69 +17,73 @@
 </head>
 
 <body onload="init()">
-    
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="height:5rem;font-family: Krub" >
-                    <main class="main-container container">
-                    <a class="navbar-brand" href="#" onclick=" backToGallery()">Meme Generator</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="height:5rem;font-family: Krub">
+        <main class="main-container container">
+            <a class="navbar-brand" href="#" onclick=" backToGallery()">Meme Generator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav space-between">
+                    <a class="nav-item nav-link col-4" href="#" onclick=" backToGallery()">GALLERY</a>
+                    <a class="nav-item nav-link col-3" href="#">ABOUT</a>
+                    <a class="nav-item nav-link col-4" href="#contact">CONTACT</a>
+                </div>
+            </div>
+    </nav>
+
+    <div class="search-container container">
+        <div class="search-list"></div>
+        <div class="search-bar">
+            <input type="search" id="mySearch" placeholder="Search for image" value="" onchange="onSearchImg(this.value ,event)">
+            <button class="searchBtn"> Search</button>
+        </div>
+    </div>
+
+    <div class="canvas-control-container flex justify-content-center row">
+        <div class="canvas-container">
+            <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
+
+        </div>
+        <div class="control-box align-center col-md-2 col-12 ">
+            <ul>
+                <li>
+                    <div class="input-group mb-3">
+                        <input type=" text" class="form-control memeText" id="theText" aria-label="Recipient's username"
+                            aria-describedby="button-addon2" oninput="onSubmit(event,value)">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary addText" type="button" id="button-addon2" onclick="addText(value)">Add
+                                Text</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-secondary" id="focusSelect" onclick="changeFocus()">
+                        <i class="fas fa-exchange-alt focusSelect"></i>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                      <div class="navbar-nav space-between">
-                        <a class="nav-item nav-link col-4" href="#" onclick=" backToGallery()">GALLERY</a>
-                        <a class="nav-item nav-link col-3" href="#">ABOUT</a>
-                        <a class="nav-item nav-link col-4" href="#contact">CONTACT</a>
-                      </div>
-                    </div>
-                </nav>
-
-        <div class="search-container container">
-            <div class="search-list"></div>
-            <div class="search-bar">
-                <input type="search" id="mySearch" placeholder="Search for image" value="" onchange="onSearchImg(this.value ,event)">
-                <button class="searchBtn"> Search</button>
-            </div>
+                    <button type="button" class="btn btn-secondary">
+                        <input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)">
+                    </button>
+                </li>
+                <li>
+                    <input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)">
+                </li>
+                <!-- <button class="showSize"> </button> -->
+                <li>
+                    <button type="button" class="btn btn-secondary" onclick="capitalLetter()">A</button>
+                    <button type="button" class="btn btn-secondary" onclick="lowerLetter()">a</button>
+                </li>
+            </ul>
+            <div><a onclick="downloadCanvas(this)"><button type="button" class="btn btn-outline-danger ">Download</button></a></div>
         </div>
-
-        <div class="canvas-control-container flex justify-content-center row">
-            <div class="canvas-container col-md-5 col-12">
-                <canvas id="canvas">Upgrade your browser to enjoy Canvas</canvas>
-
-            </div>
-            <div class="control-box align-center col-md-2 col-12 ">
-                <ul>
-                    <li><input id="theText" class="memeText" type="text" oninput="onSubmit(event, value)">
-                        <button id="submit" class="addText" onclick="addText(value)">Add text</button></li>
-                    <li><button class="focusSelect" onclick="changeFocus()">Switch</button></li>
-                    <li><input id="theColor" type="color" value="#ffffff" onchange="updateColor(value)"></li>
-                    <li><input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)"></li>
-                    <!-- <button class="showSize"> </button> -->
-                    <li><button onclick="capitalLetter()">A</button><button onclick="lowerLetter()">a</button></li>
-                </ul>
-                <div><a onclick="downloadCanvas(this)"><button type="button" class="btn btn-outline-success ">Download</button></a></div>
-            </div>
-            <!-- change box to card style below -->
-            <!-- <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div> -->
-        </div>
+    </div>
 
 
-        <section class="imgs-container flex flex-wrap flex-direction center" id="gallery"></section>
+    <section class="imgs-container flex flex-wrap flex-direction center" id="gallery"></section>
 
-        <section class="imgs-container flex flex-wrap flex-direction center"></section>
+    <section class="imgs-container flex flex-wrap flex-direction center"></section>
     </main>
 
     <footer class="bg-light grid" id="contact">
@@ -120,8 +124,6 @@
             </div>
         </div>
     </footer>
-
-
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
