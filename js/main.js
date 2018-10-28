@@ -20,7 +20,6 @@ function setMemeImg(id) {
     setCurrMeme(id);
     drawImageIn();
     gTexts = getMemeTxts();
-    console.log(gTexts);
 }
 
 
@@ -107,7 +106,6 @@ function onSearchImg(keyword, event) {
             }
         }   
     });
-    console.log(imgsFilter);
     renderImgsGallery();
 }
 

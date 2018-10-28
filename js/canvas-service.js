@@ -1,7 +1,5 @@
 'use strict';
 
-// var gCanvas;
-// var gCtx;
 
 // variables used to get mouse position on the canvas
 var $canvas = $("#canvas");
@@ -48,7 +46,6 @@ function handleDragStart(e) {
     var elInputTxt = document.getElementById('theText');
 
     gTexts = getMemeTxts();
-    console.log(gTexts, 'in handle mouse down')
     startX = parseInt(e.clientX - gCanvas.offsetLeft);
     startY = parseInt(e.clientY - gCanvas.offsetTop);
     //mousedown 
@@ -60,7 +57,6 @@ function handleDragStart(e) {
             renderCanvas();
             elCurrColor.value = gTexts[i].color;
             elInputTxt.value = gTexts[i].text;
-            console.log('selected:', selectedText);
             return;
         }
         else {
@@ -98,12 +94,11 @@ function handleMouseMove(e) {
     if (selectedText < 0) {
         return;
     }
-    // debugger
+    
     e.preventDefault();
     var mouseX = parseInt(e.clientX - gCanvas.offsetLeft);
-    console.log('mouseX', mouseX);
     var mouseY = parseInt(e.clientY - gCanvas.offsetTop);
-    console.log('mouseY', mouseY);
+    
 
     // mousemove 
     var dx = mouseX - startX;
@@ -112,7 +107,6 @@ function handleMouseMove(e) {
     startY = mouseY;
 
     var text = gTexts[selectedText];
-    console.log('text', text);
     text.x += dx;
     text.y += dy;
     renderMove();
@@ -121,14 +115,13 @@ function handleMouseMove(e) {
 function handleTouchMove(e) {
     if (selectedText < 0) {
         return;
-        // debugger
+        
     }
     var touch = e.touches[0];
     e.preventDefault();
     var mouseX = parseInt(touch.clientX - gCanvas.offsetLeft);
-    console.log('mouseX', mouseX);
     var mouseY = parseInt(touch.clientY - gCanvas.offsetTop);
-    console.log('mouseY', mouseY);
+    
 
     // mousemove 
     var dx = mouseX - startX;
@@ -137,7 +130,6 @@ function handleTouchMove(e) {
     startY = mouseY;
 
     var text = gTexts[selectedText];
-    console.log('text', text);
     text.x += dx;
     text.y += dy;
     renderMove();

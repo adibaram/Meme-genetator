@@ -18,7 +18,7 @@
 
 <body onload="init()">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="height:5rem;font-family: Krub">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="font-family: Krub">
         <main class="main-container container">
             <a class="navbar-brand" href="#" onclick=" backToGallery()">Meme Generator</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -67,12 +67,13 @@
                 <li>
                     <input id="sizeFont" type="range" min=10 max=50 step="1" onchange="updateFontSize(value)">
                 </li>
-                <!-- <button class="showSize"> </button> -->
+    
                 <li>
                     <button type="button" class="btn btn-secondary" onclick="capitalLetter()">A</button>
                     <button type="button" class="btn btn-secondary" onclick="lowerLetter()">a</button>
                 </li>
             </ul>
+
             <div><a onclick="downloadCanvas(this)"><button type="button" class="btn btn-outline-danger ">Download</button></a></div>
         </div>
     </div>

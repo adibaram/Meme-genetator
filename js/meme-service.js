@@ -35,7 +35,6 @@ function drawImageIn() {
 }
 
 function onSubmit(ev, txt) {
-    //debugger;
     var y = gMeme.txts[gTextFocus].y;
     var txt = {
         text: $("#theText").val(),
@@ -92,7 +91,7 @@ function addText(txt) {
         })
     };
 
-    // addToList();
+    
     if (gMeme.txts.length === 0) renderCanvas();
     else {
         gTextFocus++;
@@ -215,14 +214,6 @@ function initializeDisply() {
 // }
 
 
-// function checkTxtsNum() {
-//     if (gMeme.txts.length === 0) gy = gMeme.txts.length * 120 + 40;
-// }
 
 
 
-// function toggleMenu() {
-//     var mainMenu = document.getElementById('mainMenu');
-//     console.log(mainMenu);
-//     mainMenu.classList.toggle('open');
-// }
